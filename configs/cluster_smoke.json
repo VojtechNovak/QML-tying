@@ -1,0 +1,368 @@
+{
+  "schema": 3,
+  "title": "Motivated parameter tying in QML",
+  "profile": "smoke",
+  "optimizers": [
+    "cobyla",
+    "de",
+    "jSO-derived",
+    "iSOMA-AR"
+  ],
+  "tier_order": [
+    "core",
+    "teacher",
+    "transfer"
+  ],
+  "cases": [
+    {
+      "name": "reupload_small",
+      "tier": "core",
+      "spec": {
+        "family": "reupload",
+        "n": 4,
+        "layers": 2,
+        "latent": 2,
+        "encoding": "reupload",
+        "batch_size": 16
+      },
+      "dataset": "moons",
+      "ties": [
+        "untied",
+        "depth",
+        "random_depth",
+        "space"
+      ],
+      "map_seed": 17,
+      "teacher_seed": 77131,
+      "n_samples": 24
+    },
+    {
+      "name": "qcnn_small",
+      "tier": "core",
+      "spec": {
+        "family": "qcnn",
+        "n": 4,
+        "layers": 2,
+        "latent": 2,
+        "encoding": "reupload",
+        "batch_size": 16
+      },
+      "dataset": "phase_regime",
+      "ties": [
+        "untied",
+        "spatial",
+        "random_spatial",
+        "scale_shared"
+      ],
+      "map_seed": 17,
+      "teacher_seed": 77131,
+      "n_samples": 24
+    },
+    {
+      "name": "autoencoder_small",
+      "tier": "core",
+      "spec": {
+        "family": "autoencoder",
+        "n": 4,
+        "layers": 2,
+        "latent": 2,
+        "encoding": "reupload",
+        "batch_size": 16
+      },
+      "dataset": "compress_depth",
+      "ties": [
+        "untied",
+        "inverse",
+        "inverse_depth",
+        "inverse_random_depth"
+      ],
+      "map_seed": 17,
+      "teacher_seed": 77131,
+      "n_samples": 24
+    },
+    {
+      "name": "recurrent_small",
+      "tier": "core",
+      "spec": {
+        "family": "recurrent",
+        "n": 4,
+        "layers": 2,
+        "latent": 2,
+        "encoding": "reupload",
+        "batch_size": 16
+      },
+      "dataset": "sequence_parity",
+      "ties": [
+        "untied",
+        "temporal",
+        "random_temporal",
+        "block_time"
+      ],
+      "map_seed": 17,
+      "teacher_seed": 77131,
+      "n_samples": 24
+    },
+    {
+      "name": "graph_small",
+      "tier": "core",
+      "spec": {
+        "family": "graph",
+        "n": 6,
+        "layers": 2,
+        "latent": 2,
+        "encoding": "reupload",
+        "batch_size": 16
+      },
+      "dataset": "graph_connectivity",
+      "ties": [
+        "untied",
+        "node_edge",
+        "random_node_edge",
+        "layer_shared"
+      ],
+      "map_seed": 17,
+      "teacher_seed": 77131,
+      "n_samples": 24
+    },
+    {
+      "name": "su2_small",
+      "tier": "core",
+      "spec": {
+        "family": "su2",
+        "n": 4,
+        "layers": 2,
+        "latent": 2,
+        "encoding": "reupload",
+        "batch_size": 16
+      },
+      "dataset": "singlet_teacher",
+      "ties": [
+        "untied",
+        "su2",
+        "random_su2",
+        "su2_spatial"
+      ],
+      "map_seed": 17,
+      "teacher_seed": 77131,
+      "n_samples": 24
+    },
+    {
+      "name": "qcnn_larger",
+      "tier": "scale",
+      "spec": {
+        "family": "qcnn",
+        "n": 8,
+        "layers": 2,
+        "latent": 2,
+        "encoding": "reupload",
+        "batch_size": 16
+      },
+      "dataset": "phase_regime",
+      "ties": [
+        "untied",
+        "spatial",
+        "random_spatial",
+        "scale_shared"
+      ],
+      "map_seed": 17,
+      "teacher_seed": 77131,
+      "n_samples": 24,
+      "diagnostic_splits": 1,
+      "landscape": {
+        "starts": 4,
+        "quench_budget": 60,
+        "gradient_samples": 8,
+        "global_samples": 16,
+        "hessian_projection": 6,
+        "lines": 1,
+        "line_points": 33
+      }
+    },
+    {
+      "name": "recurrent_larger",
+      "tier": "scale",
+      "spec": {
+        "family": "recurrent",
+        "n": 6,
+        "layers": 2,
+        "latent": 2,
+        "encoding": "reupload",
+        "batch_size": 16
+      },
+      "dataset": "sequence_parity",
+      "ties": [
+        "untied",
+        "temporal",
+        "random_temporal",
+        "block_time"
+      ],
+      "map_seed": 17,
+      "teacher_seed": 77131,
+      "n_samples": 24,
+      "diagnostic_splits": 1,
+      "landscape": {
+        "starts": 4,
+        "quench_budget": 60,
+        "gradient_samples": 8,
+        "global_samples": 16,
+        "hessian_projection": 6,
+        "lines": 1,
+        "line_points": 33
+      }
+    },
+    {
+      "name": "graph_larger",
+      "tier": "scale",
+      "spec": {
+        "family": "graph",
+        "n": 7,
+        "layers": 2,
+        "latent": 2,
+        "encoding": "reupload",
+        "batch_size": 16
+      },
+      "dataset": "graph_connectivity",
+      "ties": [
+        "untied",
+        "node_edge",
+        "random_node_edge",
+        "layer_shared"
+      ],
+      "map_seed": 17,
+      "teacher_seed": 77131,
+      "n_samples": 24,
+      "diagnostic_splits": 1,
+      "landscape": {
+        "starts": 4,
+        "quench_budget": 60,
+        "gradient_samples": 8,
+        "global_samples": 16,
+        "hessian_projection": 6,
+        "lines": 1,
+        "line_points": 33
+      }
+    },
+    {
+      "name": "recurrent_stationary_teacher",
+      "tier": "teacher",
+      "spec": {
+        "family": "recurrent",
+        "n": 4,
+        "layers": 2,
+        "latent": 2,
+        "encoding": "reupload",
+        "batch_size": 16
+      },
+      "dataset": "sequence_teacher",
+      "ties": [
+        "untied",
+        "temporal",
+        "random_temporal",
+        "block_time"
+      ],
+      "map_seed": 17,
+      "teacher_seed": 77131,
+      "n_samples": 24,
+      "diagnostic_splits": 1
+    },
+    {
+      "name": "recurrent_stationary_teacher_larger",
+      "tier": "transfer_target",
+      "spec": {
+        "family": "recurrent",
+        "n": 6,
+        "layers": 2,
+        "latent": 2,
+        "encoding": "reupload",
+        "batch_size": 16
+      },
+      "dataset": "sequence_teacher",
+      "ties": [
+        "untied",
+        "temporal",
+        "random_temporal",
+        "block_time"
+      ],
+      "map_seed": 17,
+      "teacher_seed": 77131,
+      "n_samples": 24,
+      "diagnostic_splits": 1
+    }
+  ],
+  "profiles": {
+    "smoke": {
+      "n_samples": 150,
+      "fit_budget": 60,
+      "mlp_budget": 60,
+      "split_seeds": [
+        11
+      ],
+      "run_seeds": [
+        0
+      ],
+      "checkpoints": 6,
+      "diagnostic_splits": 1,
+      "landscape": {
+        "starts": 2,
+        "quench_budget": 5,
+        "gradient_samples": 2,
+        "global_samples": 4,
+        "full_hessian_limit": 6,
+        "hessian_projection": 3,
+        "lines": 1,
+        "line_points": 17
+      },
+      "expressivity": {
+        "parameter_samples": 4,
+        "jacobian_samples": 1
+      }
+    }
+  },
+  "calibration_safety_factor": 1.8,
+  "calibration_seed": 58204,
+  "max_node_hours": 50,
+  "budget_scope": "shared with earlier cluster study when its sibling ledger exists",
+  "primary_estimand": "paired effects of sharing at a common evaluation ceiling within each architecture and task",
+  "inferential_unit": "independently generated dataset seed; run seeds averaged first",
+  "no_vqe_or_qaoa": true,
+  "tier_dependencies": {
+    "transfer": [
+      "core",
+      "teacher"
+    ]
+  },
+  "transfers": [
+    {
+      "source": "qcnn_small",
+      "target": "qcnn_larger",
+      "modes": [
+        "scale_shared"
+      ]
+    },
+    {
+      "source": "graph_small",
+      "target": "graph_larger",
+      "modes": [
+        "node_edge",
+        "random_node_edge",
+        "layer_shared"
+      ]
+    },
+    {
+      "source": "recurrent_small",
+      "target": "recurrent_larger",
+      "modes": [
+        "temporal",
+        "random_temporal"
+      ]
+    },
+    {
+      "source": "recurrent_stationary_teacher",
+      "target": "recurrent_stationary_teacher_larger",
+      "modes": [
+        "temporal",
+        "random_temporal"
+      ]
+    }
+  ]
+}
